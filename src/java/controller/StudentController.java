@@ -44,13 +44,17 @@ public class StudentController extends HttpServlet {
                 break;
                 
             case "add":
-                int addId = Integer.parseInt(idStr);
-                String name = request.getParameter("name");
-                int age = Integer.parseInt(request.getParameter("age"));
-                std.addStudent(addId, name, age);
-                list = std.getAllStudent();
-                request.setAttribute("msg", "Đã Thêm Thành Công!");
-                request.setAttribute("list", list);
+                try{
+                    int addId = Integer.parseInt(idStr);
+                    String name = request.getParameter("name");
+                    int age = Integer.parseInt(request.getParameter("age"));
+                    std.addStudent(addId, name, age);
+                    list = std.getAllStudent();
+                    request.setAttribute("msg", "Đã Thêm Thành Công!");
+                    request.setAttribute("list", list);
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
                 break;
                 
             case "search":
