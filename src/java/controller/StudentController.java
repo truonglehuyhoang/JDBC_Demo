@@ -58,14 +58,18 @@ public class StudentController extends HttpServlet {
                 break;
                 
             case "search":
-                int searchId = Integer.parseInt(idStr);
-                Student student = std.getStudentById(searchId);
-                if(student != null){
-                    request.setAttribute("msg", "Đã Tìm Thấy Học Sinh: ");
-                    request.setAttribute("list", Collections.singletonList(student));
-                } else{
-                    request.setAttribute("msg", "Không Tìm Thấy Học Sinh.");
-                    request.setAttribute("list", null);
+                try{
+                    int searchId = Integer.parseInt(idStr);
+                    Student student = std.getStudentById(searchId);
+                    if(student != null){
+                        request.setAttribute("msg", "Đã Tìm Thấy Học Sinh: ");
+                        request.setAttribute("list", Collections.singletonList(student));
+                    } else{
+                        request.setAttribute("msg", "Không Tìm Thấy Học Sinh.");
+                        request.setAttribute("list", null);
+                    }
+                } catch(Exception e){
+                    e.printStackTrace();
                 }
                 break;
                 
