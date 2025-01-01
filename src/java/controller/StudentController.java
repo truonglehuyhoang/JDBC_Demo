@@ -62,7 +62,7 @@ public class StudentController extends HttpServlet {
                     int searchId = Integer.parseInt(idStr);
                     Student student = std.getStudentById(searchId);
                     if(student != null){
-                        request.setAttribute("msg", "Đã Tìm Thấy Học Sinh: ");
+                        request.setAttribute("msg", "Kết Quả Tìm Kiếm: ");
                         request.setAttribute("list", Collections.singletonList(student));
                     } else{
                         request.setAttribute("msg", "Không Tìm Thấy Học Sinh.");

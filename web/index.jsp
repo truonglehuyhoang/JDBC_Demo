@@ -48,16 +48,17 @@
             </c:when>
             
             <c:when test="${param.action == 'delete'}">
-                <h2>${msg}</h2>
+                <br>
                 <form action="student" method="get">
                     <input type="hidden" name="action" value="delete">
                     Hãy Nhập ID: <input type="text" name="id" required><br>
                     <button type="submit">Xóa</button>
                 </form>
+                <h2>${msg}</h2>
             </c:when>
             
             <c:when test="${param.action == 'add'}">
-                <h2>${msg}</h2>
+                <br>
                 <form action="student" method="get">
                     <input type="hidden" name="action" value="add">
                     Nhập ID: <input type="text" name="id" required><br>
@@ -65,17 +66,42 @@
                     Nhập Tuổi: <input type="text" name="age" required><br>
                     <button type="submit">Hoàn Thành</button>
                 </form>
+                <h2>${msg}</h2>
             </c:when>
             
             <c:when test="${param.action == 'search'}">
+                <br>
+                <form action="student" method="get">
+                    <input type="hidden" name="action" value="search">
+                    Nhập ID: <input type="text" name="id" required><br>
+                    <button type="submit">Tìm Kiếm</button>
+                </form>
+                <br>
                 <h2>${msg}</h2>
-                
-                
-                <button type="submit">Tìm Kiếm</button>
+                <c:if test="${not empty list}">
+                    <table border="1" cellpadding="5" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Tên</th>
+                                <th>Tuổi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach var="student" items="${list}">
+                                <tr>
+                                    <td>${student.id}</td>
+                                    <td>${student.name}</td>
+                                    <td>${student.age}</td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                </c:if>
             </c:when>
             
             <c:otherwise>
-                
+                <p style="color:red">Hãy chọn các nút chức năng trên để tiếp tục!</p>
             </c:otherwise>
         </c:choose>
     </body>
