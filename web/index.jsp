@@ -48,21 +48,30 @@
             </c:when>
             
             <c:when test="${param.action == 'delete'}">
-                <input type="hidden" name="action" value="delete">
-                    <label for="id">ID:</label>
-                    <input type="text" id="id" name="id" required><br>
-                    <button type="submit">Xóa</button>
+                <h2>${msg}</h2>
                 <form action="student" method="get">
-                    
+                    <input type="hidden" name="action" value="delete">
+                    Hãy Nhập ID: <input type="text" name="id" required><br>
+                    <button type="submit">Xóa</button>
                 </form>
             </c:when>
             
             <c:when test="${param.action == 'add'}">
-                
+                <h2>${msg}</h2>
+                <form action="student" method="get">
+                    <input type="hidden" name="action" value="add">
+                    Nhập ID: <input type="text" name="id" required><br>
+                    Nhập Tên: <input type="text" name="name" required><br>
+                    Nhập Tuổi: <input type="text" name="age" required><br>
+                    <button type="submit">Hoàn Thành</button>
+                </form>
             </c:when>
             
             <c:when test="${param.action == 'search'}">
+                <h2>${msg}</h2>
                 
+                
+                <button type="submit">Tìm Kiếm</button>
             </c:when>
             
             <c:otherwise>
