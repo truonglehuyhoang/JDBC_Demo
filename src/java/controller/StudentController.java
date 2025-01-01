@@ -32,11 +32,15 @@ public class StudentController extends HttpServlet {
                 break;
                 
             case "delete":
-                int deleteId = Integer.parseInt(idStr);
-                boolean isDeleted = std.removeStudent(deleteId);
-                list = std.getAllStudent();
-                request.setAttribute("msg", isDeleted ? "Đã Xóa Thành Công!" : "Không Tìm Thấy Học Sinh.");
-                request.setAttribute("list", list);
+                try{
+                    int deleteId = Integer.parseInt(idStr);
+                    boolean isDeleted = std.removeStudent(deleteId);
+                    list = std.getAllStudent();
+                    request.setAttribute("msg", isDeleted ? "Đã Xóa Thành Công!" : "Không Tìm Thấy Học Sinh.");
+                    request.setAttribute("list", list);
+                } catch(Exception e){
+                    e.printStackTrace();
+                }
                 break;
                 
             case "add":

@@ -17,15 +17,13 @@
         
         <form action="student" method="get">
             <button type="submit" name="action" value="list">Xem Danh Sách</button>
-            <button type="submit" name="action" value="add">Thêm Học Sinh</button>
             <button type="submit" name="action" value="delete">Xóa Học Sinh</button>
+            <button type="submit" name="action" value="add">Thêm Học Sinh</button>
             <button type="submit" name="action" value="search">Tìm Kiếm Học Sinh</button>
         </form>
         
         <c:choose>
-            
-            
-            <c:otherwise>
+            <c:when test="${param.action == 'list'}">
                 <h2>${msg}</h2>
                 <c:if test="${not empty list}">
                     <table border="1" cellpadding="5" cellspacing="0">
@@ -47,6 +45,28 @@
                         </tbody>
                     </table>
                 </c:if>
+            </c:when>
+            
+            <c:when test="${param.action == 'delete'}">
+                <input type="hidden" name="action" value="delete">
+                    <label for="id">ID:</label>
+                    <input type="text" id="id" name="id" required><br>
+                    <button type="submit">Xóa</button>
+                <form action="student" method="get">
+                    
+                </form>
+            </c:when>
+            
+            <c:when test="${param.action == 'add'}">
+                
+            </c:when>
+            
+            <c:when test="${param.action == 'search'}">
+                
+            </c:when>
+            
+            <c:otherwise>
+                
             </c:otherwise>
         </c:choose>
     </body>
