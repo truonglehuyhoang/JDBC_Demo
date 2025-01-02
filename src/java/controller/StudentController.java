@@ -39,7 +39,8 @@ public class StudentController extends HttpServlet {
                     request.setAttribute("msg", isDeleted ? "Đã Xóa Thành Công!" : "Không Tìm Thấy Học Sinh.");
                     request.setAttribute("list", list);
                 } catch(Exception e){
-                    e.printStackTrace();
+                    //e.printStackTrace();
+                    request.setAttribute("msg", "Vui lòng nhập thông tin");
                 }
                 break;
                 
@@ -54,6 +55,7 @@ public class StudentController extends HttpServlet {
                     request.setAttribute("list", list);
                 }catch(Exception e){
                     e.printStackTrace();
+                    request.setAttribute("msg", "Vui lòng nhập đầy đủ thông tin");
                 }
                 break;
                 
@@ -70,6 +72,7 @@ public class StudentController extends HttpServlet {
                     }
                 } catch(Exception e){
                     e.printStackTrace();
+                    request.setAttribute("msg", "Vui lòng nhập thông tin");
                 }
                 break;
                 
