@@ -36,11 +36,11 @@ public class StudentController extends HttpServlet {
                     int deleteId = Integer.parseInt(idStr);
                     boolean isDeleted = std.removeStudent(deleteId);
                     list = std.getAllStudent();
-                    request.setAttribute("msg", isDeleted ? "Đã Xóa Thành Công!" : "Không Tìm Thấy Học Sinh.");
+                    request.setAttribute("msg", isDeleted ? "<h2 style='color:green;'>Đã Xóa Thành Công!</h2>" 
+                                                            : "<h2 style='color:red;'>Không Tìm Thấy Học Sinh.</h2>");
                     request.setAttribute("list", list);
                 } catch(Exception e){
-                    //e.printStackTrace();
-                    request.setAttribute("msg", "Vui lòng nhập thông tin");
+                    e.printStackTrace();
                 }
                 break;
                 
@@ -51,11 +51,10 @@ public class StudentController extends HttpServlet {
                     int age = Integer.parseInt(request.getParameter("age"));
                     std.addStudent(addId, name, age);
                     list = std.getAllStudent();
-                    request.setAttribute("msg", "Đã Thêm Thành Công!");
+                    request.setAttribute("msg", "<h2 style='color:green;'>Đã Thêm Thành Công!</h2>");
                     request.setAttribute("list", list);
                 }catch(Exception e){
                     e.printStackTrace();
-                    request.setAttribute("msg", "Vui lòng nhập đầy đủ thông tin");
                 }
                 break;
                 
@@ -64,15 +63,14 @@ public class StudentController extends HttpServlet {
                     int searchId = Integer.parseInt(idStr);
                     Student student = std.getStudentById(searchId);
                     if(student != null){
-                        request.setAttribute("msg", "Kết Quả Tìm Kiếm: ");
+                        request.setAttribute("msg", "<h2 style='color:green;'>Kết Quả Tìm Kiếm: </h2>");
                         request.setAttribute("list", Collections.singletonList(student));
                     } else{
-                        request.setAttribute("msg", "Không Tìm Thấy Học Sinh.");
+                        request.setAttribute("msg", "<h2 style='color:red;'>Không Tìm Thấy Học Sinh.</h2>");
                         request.setAttribute("list", null);
                     }
                 } catch(Exception e){
                     e.printStackTrace();
-                    request.setAttribute("msg", "Vui lòng nhập thông tin");
                 }
                 break;
                 
