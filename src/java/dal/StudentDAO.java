@@ -69,7 +69,7 @@ public class StudentDAO extends DBConnect implements StudentInterface{
             PreparedStatement stm = c.prepareStatement(sql);
             stm.setInt(1, id);
             ResultSet rs = stm.executeQuery();
-            if(rs.next()){
+            while(rs.next()){
                 id = rs.getInt("id");
                 String name = rs.getString("name");
                 int age = rs.getInt("age");      
